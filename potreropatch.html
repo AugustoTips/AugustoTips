@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potrero Patch | e-Football 2027 - Augusto Tips</title>
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           VARIABLES DE COLOR
+           ========================================= */
+        :root {
+            --bg-color: #121212;
+            --surface-color: rgba(30, 30, 30, 0.85);
+            --primary-color: #00d2ff;
+            --text-main: #f5f5f5;
+            --text-muted: #b3b3b3;
+            --border-radius: 12px;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* =========================================
+           RESET Y ESTILOS GLOBALES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: transparent;
+            color: var(--text-main);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================================
+           FONDO DE PARTÍCULAS
+           ========================================= */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: var(--bg-color);
+        }
+
+        /* =========================================
+           NAVEGACIÓN
+           ========================================= */
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-volver {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-volver:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* =========================================
+           HERO SECTION Y BOTONES
+           ========================================= */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: -webkit-linear-gradient(45deg, var(--primary-color), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .hero p.descripcion {
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .hero-actions-wrapper {
+            margin: 30px auto 0 auto;
+            padding: 25px;
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid #333;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .hero-actions-wrapper p.soporte-texto {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin: 0 auto 20px auto;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn-youtube {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff0000;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-youtube:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+            color: #fff;
+        }
+
+        .btn-instagram {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+            color: #fff;
+        }
+
+        /* =========================================
+           ESTILOS DE SECCIONES
+           ========================================= */
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px 0;
+            font-size: 2rem;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        /* =========================================
+           CASILLEROS: VIDEOS DE YOUTUBE
+           ========================================= */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: #000;
+            border: 1px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* =========================================
+           CASILLEROS: GALERÍA DE IMÁGENES
+           ========================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-grid .image-box:nth-child(n+7) {
+            display: none;
+        }
+
+        .image-box {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+            background-color: var(--surface-color);
+            aspect-ratio: 16/9;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .image-box::after {
+            content: '\f00e';
+            font-family: 'FontAwesome';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .image-box:hover::after {
+            opacity: 1;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            display: block;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.08);
+            filter: brightness(0.6);
+        }
+
+        /* =========================================
+           MODAL (VISOR LIGHTBOX EN PANTALLA COMPLETA)
+           ========================================= */
+        .modal-visor {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .modal-contenido {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 210, 255, 0.4);
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 1001;
+        }
+
+        .cerrar-modal:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-nav-modal {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            transition: 0.3s;
+            user-select: none;
+            background-color: rgba(30, 30, 30, 0.6);
+            border-radius: 5px;
+        }
+
+        .btn-nav-modal:hover {
+            background-color: var(--primary-color);
+        }
+
+        .prev-modal { left: 20px; }
+        .next-modal { right: 20px; }
+
+        /* =========================================
+           PIE DE PÁGINA
+           ========================================= */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: rgba(30, 30, 30, 0.95);
+            border-top: 1px solid #333;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-nav-modal { padding: 15px; font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .video-grid { grid-template-columns: 1fr; }
+            .btn-instagram, .btn-youtube { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor del fondo de partículas -->
+    <div id="particles-js"></div>
+
+    <!-- Navegación superior -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <i class="fas fa-gamepad"></i> Potrero Patch
+            </div>
+            <a href="https://augustotips.github.io/AugustoTips/" class="btn-volver">
+                <i class="fas fa-arrow-left"></i> Volver a Augusto Tips
+            </a>
+        </div>
+    </header>
+
+    <!-- Encabezado de la página -->
+    <section class="hero">
+        <div class="container">
+            <h1>Potrero Patch 2027</h1>
+            <p class="descripcion">La actualización definitiva para Pro Evolution Soccer 2018 en la consola PlayStation 3. Todo lo necesario para dejar tu juego como un verdadero e-Football 2027.</p>
+            
+            <!-- PANEL UNIFICADO DE BOTONES Y CONTACTO (NUEVO ORDEN) -->
+            <div class="hero-actions-wrapper">
+                <p class="soporte-texto">¿Tienes dudas o necesitas soporte? Contáctanos a través de nuestros perfiles oficiales en Instagram o visita el canal de YouTube</p>
+                <div class="hero-buttons">
+                    <a href="https://youtube.com/@potreropatch" target="_blank" class="btn-youtube">
+                        <i class="fab fa-youtube"></i> Visitar Canal Oficial
+                    </a>
+                    <a href="https://www.instagram.com/augustotips" target="_blank" class="btn-instagram">
+                        <i class="fab fa-instagram"></i> Augusto Tips
+                    </a>
+                    <a href="https://www.instagram.com/savedatazeke" target="_blank" class="btn-instagram">
+                        <i class="fab fa-instagram"></i> Savedata Zeke
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASILLEROS DE VIDEOS -->
+    <section class="container">
+        <h2 class="section-title">Últimos Videos del Parche</h2>
+        <div class="video-grid">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/3aPWH6PDNxs" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/2HHpOLSefEM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASILLEROS DE IMÁGENES (50 CASILLEROS - Solo muestra 6 en inicio) -->
+    <section class="container">
+        <h2 class="section-title">Galería (Kits, Faces y Estadios)</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 20px;">Toca cualquier imagen para abrir la galería completa y ver las 50 capturas</p>
+        
+        <div class="gallery-grid">
+            <div class="image-box"><img src="img/captura1.jpg" alt="Captura 1 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura2.jpg" alt="Captura 2 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura3.jpg" alt="Captura 3 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura4.jpg" alt="Captura 4 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura5.jpg" alt="Captura 5 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura6.jpg" alt="Captura 6 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura7.jpg" alt="Captura 7 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura8.jpg" alt="Captura 8 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura9.jpg" alt="Captura 9 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura10.jpg" alt="Captura 10 Potrero Patch"></div>
+            
+            <div class="image-box"><img src="img/captura11.jpg" alt="Captura 11 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura12.jpg" alt="Captura 12 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura13.jpg" alt="Captura 13 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura14.jpg" alt="Captura 14 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura15.jpg" alt="Captura 15 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura16.jpg" alt="Captura 16 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura17.jpg" alt="Captura 17 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura18.jpg" alt="Captura 18 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura19.jpg" alt="Captura 19 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura20.jpg" alt="Captura 20 Potrero Patch"></div>
+            
+            <div class="image-box"><img src="img/captura21.jpg" alt="Captura 21 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura22.jpg" alt="Captura 22 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura23.jpg" alt="Captura 23 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura24.jpg" alt="Captura 24 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura25.jpg" alt="Captura 25 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura26.jpg" alt="Captura 26 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura27.jpg" alt="Captura 27 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura28.jpg" alt="Captura 28 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura29.jpg" alt="Captura 29 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura30.jpg" alt="Captura 30 Potrero Patch"></div>
+            
+            <div class="image-box"><img src="img/captura31.jpg" alt="Captura 31 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura32.jpg" alt="Captura 32 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura33.jpg" alt="Captura 33 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura34.jpg" alt="Captura 34 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura35.jpg" alt="Captura 35 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura36.jpg" alt="Captura 36 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura37.jpg" alt="Captura 37 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura38.jpg" alt="Captura 38 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura39.jpg" alt="Captura 39 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura40.jpg" alt="Captura 40 Potrero Patch"></div>
+            
+            <div class="image-box"><img src="img/captura41.jpg" alt="Captura 41 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura42.jpg" alt="Captura 42 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura43.jpg" alt="Captura 43 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura44.jpg" alt="Captura 44 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura45.jpg" alt="Captura 45 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura46.jpg" alt="Captura 46 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura47.jpg" alt="Captura 47 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura48.jpg" alt="Captura 48 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura49.jpg" alt="Captura 49 Potrero Patch"></div>
+            <div class="image-box"><img src="img/captura50.jpg" alt="Captura 50 Potrero Patch"></div>
+        </div>
+    </section>
+
+    <!-- VISOR MODAL LIGHTBOX -->
+    <div id="modalVisor" class="modal-visor">
+        <span class="cerrar-modal">&times;</span>
+        <img class="modal-contenido" id="imgModalExpandida" alt="Imagen ampliada">
+        <a class="btn-nav-modal prev-modal">&#10094;</a>
+        <a class="btn-nav-modal next-modal">&#10095;</a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Augusto Tips & Savedata Zeke - Todos los derechos reservados.</p>
+            <p>Soporte y modding para la comunidad de PlayStation 3.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Configuración de Partículas
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00d2ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00d2ff", "opacity": 0.3, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Visor de Galería (Lightbox)
+        const modal = document.getElementById("modalVisor");
+        const imgExpandida = document.getElementById("imgModalExpandida");
+        const imagenesGaleria = document.querySelectorAll(".gallery-grid img");
+        const btnCerrar = document.querySelector(".cerrar-modal");
+        const btnSiguiente = document.querySelector(".next-modal");
+        const btnAnterior = document.querySelector(".prev-modal");
+        
+        let indiceActual = 0;
+
+        imagenesGaleria.forEach((img, index) => {
+            img.addEventListener("click", function() {
+                modal.style.display = "flex";
+                imgExpandida.src = this.src;
+                indiceActual = index;
+                document.body.style.overflow = "hidden"; // Desactiva el scroll del fondo
+            });
+        });
+
+        function cerrarModal() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Reactiva el scroll
+        }
+
+        btnCerrar.addEventListener("click", cerrarModal);
+
+        modal.addEventListener("click", function(event) {
+            if (event.target === modal) {
+                cerrarModal();
+            }
+        });
+
+        btnSiguiente.addEventListener("click", function() {
+            indiceActual = (indiceActual === imagenesGaleria.length - 1) ? 0 : indiceActual + 1;
+            imgExpandida.src = imagenesGaleria[indiceActual].src;
+        });
+
+        btnAnterior.addEventListener("click", function() {
+            indiceActual = (indiceActual === 0) ? imagenesGaleria.length - 1 : indiceActual - 1;
+            imgExpandida.src = imagenesGaleria[indiceActual].src;
+        });
+
+        document.addEventListener("keydown", function(event) {
+            if (modal.style.display === "flex") {
+                if (event.key === "Escape") cerrarModal();
+                if (event.key === "ArrowRight") btnSiguiente.click();
+                if (event.key === "ArrowLeft") btnAnterior.click();
+            }
+        });
+    </script>
+</body>
+</html>
